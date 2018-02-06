@@ -494,6 +494,9 @@ Promise.prototype._resolveCallback = function(value, shouldBind) {
 Promise.prototype._rejectCallback =
 function(reason, synchronous, ignoreNonErrorWarnings) {
     var trace = util.ensureErrorObject(reason);
+    console.warn("TRACE:", trace);
+    console.warn("REASON:", reason);
+    console.warn("EQUAL:", trace === reason);
     var hasStack = trace === reason;
     if (!hasStack && !ignoreNonErrorWarnings && debug.warnings()) {
         var message = "a promise was rejected with a non-error: " +
